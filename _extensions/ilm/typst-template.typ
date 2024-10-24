@@ -27,12 +27,12 @@
   bibliography-style: none,
   paper-size: "a4",
   preface: none,
-  table-of-contents: none,
+  table-of-contents: false,
   chapter-pagebreak: true,
   external-link-circle: true,
-  figure-index: (enabled: false, title: ""),
-  table-index: (enabled: false, title: ""),
-  listing-index: (enabled: false, title: ""),
+  figure-index: (enabled: false, title: "List of Figures"),
+  table-index: (enabled: false, title: "List of Tables"),
+  listing-index: (enabled: false, title: "List of Listings"),
   body,
 ) = {
   // Set document metadata and global styles
@@ -82,23 +82,25 @@
   // Do not hyphenate headings
   show heading: set text(hyphenate: false)
 
-  // Show a small maroon circle next to external links
-  if external-link-circle {
-    show link: it => {
-      it
-      if type(it.dest) != label {
-        sym.wj
-        h(1.6pt)
-        sym.wj
-        super(box(height: 3.8pt, circle(radius: 1.2pt, stroke: 0.7pt + rgb("#993333"))))
-      }
+  show link: it => {
+    it
+    // Workaround for ctheorems package so that its labels keep the default link styling.
+    if external-link-circle and type(it.dest) != label  {
+      sym.wj
+      h(1.6pt)
+      sym.wj
+      super(box(height: 3.8pt, circle(radius: 1.2pt, stroke: 0.7pt + rgb("#993333"))))
     }
+  }
+  // Display preface as the second page.
+  if preface != none {
+    page(preface)
   }
 
   // Configure equation numbering
   set math.equation(numbering: "(1)")
 
-  // Display inline code in a small box
+  // Display inline code in a small box that retains the correct baseline.
   show raw.where(block: false): box.with(
     fill: fill-color.darken(2%),
     inset: (x: 3pt, y: 0pt),
@@ -135,42 +137,33 @@
       }
       #if date != none {
         v-space
-        if type(date) == datetime {
-          text(date.display(date-format))
-        } else if type(date) == str {
-          text(date)
-        } else {
-          text(date.toString())
-        }
+        text(date)
       }
     ]))
 
     // Preface
     if preface != none {
-      page(preface)
+      preface
     }
 
     // Table of contents
-    if table-of-contents != none {
-      table-of-contents
+    if table-of-contents {
+      outline(depth: 3, indent: true)
     }
 
     // Main content
     show heading.where(level: 1): it => {
-      if chapter-pagebreak { colbreak(weak: true) }
+      if chapter-pagebreak { pagebreak(weak: true) }
       it
     }
     body
 
     // Bibliography
     if bibliography != none {
-      pagebreak()
       show std-bibliography: set text(0.85em)
       // Use default paragraph properties for bibliography.
       show std-bibliography: set par(leading: 0.65em, justify: false, linebreaks: auto)
-      bibliography
     }
-
 
     // Indices
     if figure-index.enabled or table-index.enabled or listing-index.enabled {
