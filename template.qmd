@@ -52,16 +52,28 @@ $$
 
 We use the standard pandoc citation syntax here.[@wikipedia_iosevka]
 
-# Unsupported Features
-
-- [ ] External links
-- [ ] Blockquotes
-
-
 ## External links
 
-In Typst template, 'Ilm adds a small maroon circle to external (outgoing) links. This feature is not supported in Quarto now.
+'Ilm adds a small maroon circle to external (outgoing) links.
+
+Test link: [Quarto](https://quarto.org)
+
+# Unsupported Features
+
+- [ ] Blockquotes
+
 
 ## Blockquotes
 
 Typst 'Ilm support a totally different style for blockquotes. This feature is not supported in Quarto now.
+
+Test blockquote:
+
+> This is a blockquote.
+
+We just suggest you to use the default Quarto blockquote style, or callout blocks for special notes.
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
