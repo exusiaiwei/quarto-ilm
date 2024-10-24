@@ -38,12 +38,6 @@ And an ordered list:
 | A        | B        | C        |
 | D        | E        | F        |
 
-## Figures
-
-Here's a figure:
-
-![Quarto](quarto.png)
-
 ## Equations
 
 Here's an inline equation: $E = mc^2$

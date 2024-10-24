@@ -1,9 +1,6 @@
 <div align="center">
-  <h1>🎓 Quarto ILM Template</h1>
-  <p>
-    <b>English</b> |
-    <a href="README.zh-CN.md">简体中文</a>
-  </p>
+  <h1>🎓 Quarto Ilm Template</h1>
+  <p>  </p>
   <!-- Badges -->
   <p>
     <img src="https://img.shields.io/badge/quarto-template-blue" alt="quarto template">
@@ -27,7 +24,7 @@
 
 ## 🌟 About
 
-Quarto ILM is a versatile, clean, and minimal template for non-fiction writing, adapted from the  [Typst 'ilm' template](https://github.com/talal/ilm). 'Ilm' (Urdu: عِلْم), pronounced as /ə.ləm/, is the Urdu term for knowledge. This Quarto template is ideal for class notes, reports, and books.
+Quarto Ilm is a versatile, clean, and minimal template for non-fiction writing, adapted from the  [Typst 'ilm' template](https://github.com/talal/ilm). 'Ilm' (Urdu: عِلْم), pronounced as /ə.ləm/, is the Urdu term for knowledge. This Quarto template is ideal for class notes, reports, and books.
 
 ## ✨ Features
 
@@ -51,6 +48,8 @@ This will create a new directory with all the files needed to get you started.
 ## 🚀 Usage
 
 After installation, you can customize the template by modifying the YAML metadata in your Quarto document. Currently, the following metadata options are supported:
+
+Click here [template.pdf](template.pdf) to view the sample PDF generated using this template.
 
 ```yaml
 title: "ILM Typst Template Example"
